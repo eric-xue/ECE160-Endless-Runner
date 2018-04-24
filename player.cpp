@@ -32,7 +32,11 @@ void player::player_update(float dt, bool groundcollide /*playerbox.getGlobalBou
 		std::cout << "NOW VELOCITY" << player_dy << std::endl;
 	}
 
-	playerbox.move(player_dx * dt, player_dy);
+	playerbox.move(player_dx, player_dy);
+	/*should make sense despite prev code treating dy as velocity b/c dy can
+	be interpreted as small diff in y
+	"It just works." -T.H.
+	*/
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 	{
@@ -76,3 +80,28 @@ void player::player_update(float dt, bool groundcollide /*playerbox.getGlobalBou
 
 
 } 
+
+//CODE BELOW IS PSEUDOCODE BUT PART CAN BE USED FOR MINUS HEALTH
+//MINUSHEALTH FUNC CAN TAKE BOOL OF HIT
+void player::minushealthPSEUDOCODE(sf::RectangleShape pseudoenemy, float dt) {
+	std::cout << "health: " << health << std::endl;
+	if (playerbox.getGlobalBounds().intersects(pseudoenemy.getGlobalBounds()) && !hit)
+	//replace if condition with BOOL HIT
+	{
+		health--;
+		std::cout << "minus health" << std::endl << health << "left" << std::endl;
+		hit = true;
+	}
+
+	if (hit)
+	{
+		iframe += dt;
+		std::cout << "IFRAME: " << iframe << std::endl;
+		if (iframe >= (120 * dt))
+		{
+			std::cout << "cond fulfilled" << std::endl;
+			hit = false;
+			iframe = 0.0f;
+		}
+	}
+}

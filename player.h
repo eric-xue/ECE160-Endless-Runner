@@ -6,6 +6,9 @@ private:
 	float player_dx, player_dy;
 	const float player_a = 80.0f;
 	sf::Texture playertexture;
+	int health;
+	float iframe;
+	bool hit;
 public:
 	sf::RectangleShape playerbox;
 public:
@@ -17,8 +20,18 @@ public:
 		playerbox.setTexture(&playertexture);
 		playerbox.setOrigin(100.0f / 2, 100.0f / 2);
 		playerbox.setPosition(150.f, 437.0f);
+		health = 10; 
+		hit = false;
+		iframe = 0.0f;
 	}
 	void player_update(float dt, bool groundcollide);
+	/* PSEUDOCODE friend bool enemycollision(){
+	if(enemy collides with player)
+	{
+		playerhealth--
+	}*/
+	void minushealthPSEUDOCODE(sf::RectangleShape pseudoenemy, float dt);
+	
 
 
 }; 
