@@ -76,6 +76,7 @@ int main()
 		//UPDATE
 		if (!pause)
 		{
+			
 			temp += dt;
 			for (int i = 0; i < 8; i++)
 			{
@@ -95,7 +96,7 @@ int main()
 			enemy2.enemypoint(player);
 			enemy3.enemypoint(player);*/
 			//bool hit = enemy1.enemyhit(player) || enemy2.enemyhit(player) || enemy3.enemyhit(player);
-			bool hit;
+			bool hit = false;
 			for (int i = 0; i < 8; i++)
 			{
 				if (enemyarray[i]->enemyhit(player))
@@ -103,9 +104,9 @@ int main()
 					hit = true;
 					//fix this so that hit does not stay true
 				}
+				player.minushealthPSEUDOCODE(hit, dt);
 				break;
 			}
-			player.minushealthPSEUDOCODE(hit, dt);
 			health.updatehp(player);
 			for (int i = 0; i < 8; i++)
 			{
