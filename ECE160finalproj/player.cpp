@@ -199,7 +199,7 @@ void player::player_reset(ground ground)
 
 void player::resetpoints() {
 	points = 0;
-	multiplier = 0;
+	multiplier = 1;
 }
 
 bool player::is_hit() {
