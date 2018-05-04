@@ -29,7 +29,7 @@ int main()
 	bool pause = true;
 	bool start = true;
 	float temp = 0;
-	//int starter_enemy = 1; NOT USED PRETTY SURE
+	
 
 
 	while (window.isOpen())
@@ -70,7 +70,7 @@ int main()
 			starter_enemy = 0;
 
 		}
-
+		//Clock for timings
 		dt = clock.restart().asSeconds();
 		if (dt >(1.0f / 20.0f))
 		{
@@ -85,15 +85,19 @@ int main()
 				enemyarray[starter_enemy];
 
 			}
-
-			player.player_update(dt, groundcollide, ground);	//Player move function
+			//Player move function
+			player.player_update(dt, groundcollide, ground);	
+			
+			//Enemy update functions
+			//Most moved to this loop to reduce #for loops
 			for (int i = 0; i < ENEMYCOUNT; i++)
 			{
 				enemyarray[i]->enemymove();
 				enemyarray[i]->enemypoint(player);
 				enemyarray[i]->enemycheckbounds();
 			}
-
+			
+			//Player minus health and invincibility w/ break to reduce looping
 			for (int i = 0; i < ENEMYCOUNT; i++)
 			{
 				if (enemyarray[i]->enemyhit(player)) {
