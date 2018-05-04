@@ -53,7 +53,6 @@ int main()
 			}
 		}
 		//GAMESTATE RESET
-		float enemyspawned = 0.0f;
 		if (player.health == 0)
 		{
 			pause = true;
