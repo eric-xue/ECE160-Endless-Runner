@@ -66,7 +66,6 @@ int main()
 				enemyarray[i]->resetenemypos();
 			}
 			bool start = true;
-			starter_enemy = 0;
 
 		}
 		//Clock for timings
@@ -79,11 +78,6 @@ int main()
 		//UPDATE
 		if (!pause)
 		{
-			if (start)
-			{
-				enemyarray[starter_enemy];
-
-			}
 			//Player move function
 			player.player_update(dt, groundcollide, ground);	
 			
